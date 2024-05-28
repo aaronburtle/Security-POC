@@ -1,0 +1,19 @@
+name: SQL Server 2019 Build and Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install SQL Server 2019
+      run: |
+        choco install sql-server-management-studio -y
+        # Install additional SQL Server 2019 packages or dependencies as needed
+
+    - name: Configure SQL Server 2019
+      run: powershell ./scripts/<script>.ps1
